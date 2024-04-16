@@ -19,12 +19,12 @@ metadata:
   namespace: confluent
 spec:
   replicas: 6
-  # rackAssignment:
-  #   nodeLabels:
-  #   - topology.kubernetes.io/zone # <-- The node label that your Kubernetes uses for the rack fault domain
-  # podTemplate:
-  #   serviceAccountName: kafka # <-- The service account with the needed clusterrole/role
-  # oneReplicaPerNode: true 
+  rackAssignment:
+    nodeLabels:
+    - topology.kubernetes.io/zone # <-- The node label that your Kubernetes uses for the rack fault domain
+  podTemplate:
+    serviceAccountName: kafka # <-- The service account with the needed clusterrole/role
+  oneReplicaPerNode: true 
   image:
     application: confluentinc/cp-server:7.5.0
     init: confluentinc/confluent-init-container:2.7.0
