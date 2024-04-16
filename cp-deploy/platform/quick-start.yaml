@@ -25,7 +25,7 @@ spec:
   #   nodeLabels:
   #   - topology.kubernetes.io/zone # <-- The node label that your Kubernetes uses for the rack fault domain
   # podTemplate:
-  #   serviceAccountName: kafka # <-- The service account with the needed clusterrole/role
+  #   serviceAccountName: kafka # <-- The service account with the clusterrole/role needed to access labels
   # oneReplicaPerNode: true 
   image:
     application: confluentinc/cp-server:7.5.0
