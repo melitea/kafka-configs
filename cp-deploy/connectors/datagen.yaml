@@ -10,7 +10,7 @@ spec:
   connectClusterRef:
     name: connect
   configs:
-    kafka.topic: "pageviews"
+    kafka.topic: "pageview_new"
     quickstart: "pageviews"
     key.converter: "org.apache.kafka.connect.storage.StringConverter"
     value.converter: "org.apache.kafka.connect.json.JsonConverter"
