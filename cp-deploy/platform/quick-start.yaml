@@ -17,8 +17,8 @@ kind: Kafka
 metadata:
   name: kafka
   namespace: confluent
- annotations:
-   platform.confluent.io/roll-precheck: "disable"
+  annotations:
+    platform.confluent.io/roll-precheck: "disable"
 spec:
   replicas: 6
   # rackAssignment:
