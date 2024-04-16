@@ -17,6 +17,8 @@ kind: Kafka
 metadata:
   name: kafka
   namespace: confluent
+#  annotations:
+#    platform.confluent.io/roll-precheck: "disable"
 spec:
   replicas: 6
   # rackAssignment:
@@ -34,6 +36,21 @@ spec:
   dependencies:
     zookeeper:
       endpoint: zookeeper.confluent.svc.cluster.local:2181
+# ---
+# apiVersion: platform.confluent.io/v1beta1
+# kind: KRaftController
+# metadata:
+#   name: kraftcontroller
+#   namespace: confluent
+#   annotations:
+#     platform.confluent.io/kraft-migration-hold-krc-creation: "true"
+#     platform.confluent.io/roll-precheck: "disable"
+# spec:
+#   replicas: 3
+#   dataVolumeCapacity: 10G
+#   image:
+#     application: confluentinc/cp-server:7.6.0
+#     init: confluentinc/confluent-init-container:2.8.0
 ---
 apiVersion: platform.confluent.io/v1beta1
 kind: Connect
@@ -45,15 +62,15 @@ spec:
   image:
     application: confluentinc/cp-server-connect:7.5.0
     init: confluentinc/confluent-init-container:2.7.0
-  build:
-    type: onDemand
-    onDemand:
-      plugins:
-        locationType: confluentHub
-        confluentHub:
-          - name: kafka-connect-datagen
-            owner: confluentinc
-            version: 0.5.2
+  # build:
+  #   type: onDemand
+  #   onDemand:
+  #     plugins:
+  #       locationType: confluentHub
+  #       confluentHub:
+  #         - name: kafka-connect-datagen
+  #           owner: confluentinc
+  #           version: 0.5.2
   dependencies:
     kafka:
       bootstrapEndpoint: kafka:9071
