@@ -18,7 +18,7 @@ metadata:
   name: kafka
   namespace: confluent
 spec:
-  replicas: 3
+  replicas: 6
   rackAssignment:
     nodeLabels:
     - topology.kubernetes.io/zone # <-- The node label that your Kubernetes uses for the rack fault domain
